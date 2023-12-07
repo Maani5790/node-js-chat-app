@@ -7,6 +7,10 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+io.on('connection', (socket) => {
+    console.log('a user connected', socket.id);
+});
+
 app.use(express.static(path.resolve("./public")))
 
 app.get("/", (req, res) => {
